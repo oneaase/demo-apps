@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
       - name: account
-        image: demo-apps/account-service:1.0.1
+        image: demo-apps/account-service:1.1.0
         imagePullPolicy: Never
         ports:
         - name: http
