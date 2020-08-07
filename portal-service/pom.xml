@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example.apps</groupId>
-	<artifactId>wc-portal-service</artifactId>
-	<version>1.0.4</version>
-	<name>wc-portal-service</name>
+	<artifactId>portal-service</artifactId>
+	<version>1.1.0</version>
+	<name>portal-service</name>
 	<description>REST API Application project for Spring Boot</description>
 
 	<properties>

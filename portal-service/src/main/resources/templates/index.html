@@ -22,8 +22,23 @@ window["adrum-start-time"] = new Date().getTime();
 </head>
 <body>
 	<ul>
-		<li><a href="/account">Account Service</a></li>
-		<li><a href="/order">Order Service</a></li>
+		<li>Account Service
+			<ul>
+				<li><a href="/account">All Accounts</a></li>
+				<li><a href="/account/sign_up">Sign Up</a></li>
+				<li><a href="/account/sign_in">Sing In</a></li>
+				<li><a href="/account/sign_out">Sing Out</a></li>
+			</ul>
+		</li>
+		<li>Order Service
+			<ul>
+				<li><a href="/order">All Orders</a></li>
+				<li><a href="/order/search_item">Search Item</a></li>
+				<li><a href="/order/add_item">Add Item</a></li>
+				<li><a href="/order/confirm">Confirm</a></li>
+				<li><a href="/order/checkout">Checkout</a></li>
+			</ul>
+		</li>
 	</ul>
 </body>
 </html>

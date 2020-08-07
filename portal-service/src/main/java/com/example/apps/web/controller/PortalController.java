@@ -35,9 +35,24 @@ public class PortalController {
 		ResponseEntity<Account[]> response = restTemplate.getForEntity(accountServiceEndpoint, Account[].class);
 		Account[] accounts = response.getBody();
 		for (Account account : accounts) {
-			log.info(account.getName());
+			log.info(account.getUsername());
 		}
 		
+		return "index";
+	}
+	
+	@GetMapping("/account/sign_up")
+	public String getAccountSignUpView() {
+		return "index";
+	}
+	
+	@GetMapping("/account/sign_in")
+	public String getAccountSignInView() {
+		return "index";
+	}
+	
+	@GetMapping("/account/sign_out")
+	public String getAccountSignOutView() {
 		return "index";
 	}
 	
@@ -49,6 +64,26 @@ public class PortalController {
 			log.info(order.getName());
 		}
 		
+		return "index";
+	}
+	
+	@GetMapping("/order/search_item")
+	public String getOrderSearchView() {
+		return "index";
+	}
+	
+	@GetMapping("/order/add_item")
+	public String getOrderAddView() {
+		return "index";
+	}
+	
+	@GetMapping("/order/confirm")
+	public String getOrderConfirmView() {
+		return "index";
+	}
+	
+	@GetMapping("/order/checkout")
+	public String getOrderCheckoutView() {
 		return "index";
 	}
 }
