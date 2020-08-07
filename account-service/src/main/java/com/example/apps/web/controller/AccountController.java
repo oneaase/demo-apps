@@ -1,8 +1,10 @@
 package com.example.apps.web.controller;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,44 +12,48 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.apps.web.model.Account;
+import com.example.apps.domain.repository.AccountRepository;
+import com.example.apps.domain.model.Account;
 
 @RestController
 @RequestMapping("/api/v1/account")
 public class AccountController {
 	
+	@Autowired
+	AccountRepository accountRepository;
+	
 	@GetMapping
 	public List<Account> getAll() {
-		// Mock process of get request
-		List<Account> models = new ArrayList<Account>();
-		models.add(new Account(1, "Test Account 00000001", "passw0rd"));
-		models.add(new Account(2, "Test Account 00000002", "passw0rd"));
-		return models;
+		return accountRepository.findAll();
 	}
 	
 	@GetMapping("{id}")
-	public Account getById(@PathVariable("id") int id) {
-		// Mock process of get request
-		return new Account(id, String.format("Test Account %08d", id), "passw0rd");
+	public Account getById(@PathVariable("id") Integer id) {
+		Optional<Account> accountOpt = accountRepository.findById(id);
+		
+		if (accountOpt.isPresent()) {
+			return accountOpt.get();
+		} else {
+			return null;
+		}
 	}
 
 	@PostMapping
 	public Account create(@RequestBody Account account) {
-		// Mock process of post request
-		return account;
+		return accountRepository.save(account);
 	}
 	
 	@PutMapping
 	public Account put(@RequestBody Account account) {
-		// Mock process of put request
-		return account;
+		return accountRepository.save(account);
 	}
 	
 	@DeleteMapping
-	public Account delete(@RequestBody Account account) {
-		// Mock process of post request
-		return account;
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void delete(@RequestBody Account account) {
+		accountRepository.deleteById(account.getId());
 	}
 }
